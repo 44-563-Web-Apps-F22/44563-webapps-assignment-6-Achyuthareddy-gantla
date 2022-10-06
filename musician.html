@@ -13,7 +13,7 @@
         <label for="form1_nick">Guess the musician </label>
         <input type="text" id="form1_nick" name="form1_nick" autofocus> <br>
 
-        <input type="button" onclick="checkGuess()" value="Check the guess">
+        <input type="button" id="Gussbtn" onclick="checkGuess()" value="Check the guess">
     </form>
 
 
@@ -33,9 +33,19 @@
                 out.innerHTML = "correct - " + correct + "," + "wrong - " + wrong
                 alert("You got it right")
             } else {
-                wrong = wrong + 1
-                out.innerHTML = "correct - " + correct + "," + "wrong - " + wrong
-                alert("Wrong Musician")
+                wrong += 1
+                if (wrong <= 3) {
+                    alert("Wrong Musician");
+                    if (wrong == 3) {
+                        document.getElementById("Gussbtn").onclick = function showGameOver() {
+                            alert("Sorry, game over.");
+                        }
+                    }
+                } else {
+                    document.getElementById("Gussbtn").onclick = function showGameOver() {
+                        alert("Sorry, game over.");
+                    }
+                }
             }
 
         }
