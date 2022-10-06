@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>looping computation</title>
+    </head>
+ 
+<body>
+
+<h2>Achyutha Reddy Gantla computes discounts</h2>
+<form>
+    <label for="amount">Enter base amount</label>
+    <input type="number" id="amount" value=20> <br>
+
+    <label for="dis">Enter the discount percentage</label>
+    <input type="number" id="dis" autofocus value=10> <br>
+
+    <input type="button" onclick="discount()" value="Apply discount">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<form>
+    <input type="radio" id="radiobtn1" onclick="chooseOp()" name="color" value="times">
+    <label for="radiobtn1">*</label></br>
+
+    <input type="radio" id="radiobtn2" onclick="chooseOp()" name="color" value="divide">
+    <label for="radiobtn2">/</label></br>
+
+    <input type="radio" id="radiobtn3" onclick="chooseOp()" name="color" value="exponent">
+    <label for="radiobtn3">**</label></br>
+
+</form>
+
+<p id="resultStr">This text will be replaced</p>
+
+<script>
+    function discount() {
+        amount = document.getElementById("amount").value
+        disVal = document.getElementById("dis").value
+        let result = ""
+        let k = 1
+        while (k < 6) {
+            result += k * (amount - (amount * disVal / 100)) + " "
+            console.log(result)
+            k++
+        }
+        document.getElementById("result").innerHTML = result
+    }
+    function chooseOp() {
+        amount = document.getElementById("amount").value
+        disVal = document.getElementById("dis").value
+        let result = ""
+
+        if(document.getElementById("radiobtn1").checked) {
+            result = amount * disVal
+        } else if(document.getElementById("radiobtn2").checked) {
+            result = amount / disVal
+        } else if(document.getElementById("radiobtn3").checked) {
+            result = amount ** disVal
+        }
+        document.getElementById("resultStr").innerHTML = result
+    }
+</script>
+</body>
+</html> 
